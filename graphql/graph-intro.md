@@ -75,8 +75,24 @@ GraphQL 서비스가 일단 돌아가기 시작하면(일반적으로는 웹 서
 
 엔드포인트가 적어지면 백엔드의 복잡성이 줄어들고, 엔드포인트 관리에 큰 힘을 기울일 필요가 없습니다.
 
+다음의 그림이 이해에 큰 도움을 줄 것입니다.
+
+
+![API img1.png](https://images.velog.io/post-images/jakeseo_me/be47be00-641e-11e9-b41f-c128b9fea3ea/API-img1.png)
+> RESTful API 아키텍쳐 [그림 출처(original source)](https://medium.com/@JeffLombardJr/when-and-why-to-use-graphql-24f6bce4839d)
+
+![API img2.png](https://images.velog.io/post-images/jakeseo_me/c3d56750-641e-11e9-b41f-c128b9fea3ea/API-img2.png)
+> GraphQL API 아키텍쳐 [그림 출처(original source)](https://medium.com/@JeffLombardJr/when-and-why-to-use-graphql-24f6bce4839d)
+
 ## 특정 웹 아키텍쳐 디자인 패턴을 구현하기 용이하다.
 
 우리에겐 이미 안정적인 `RESTful` 서비스가 있는데 왜 graphQL을 써야할까요?
 
 특정 디자인 패턴을 구현하기 용이합니다. 앞으로 소개될 디자인 패턴들은 사실 다른 도구로 구현될 수도 있습니다. 그런데 GraphQL을 이용하는게 가장 좋은 이유는 데이터의 요청과 조작(manipulation) 쿼리가 완전히 분리되어 있다는 것입니다.
+
+OOP에서 웹 서비스에 적용될 수 있는 몇가지 유용한 패턴들에 대해 살펴봅시다.
+
+### 컴포지트 패턴(Composite Pattern)
+
+컴포지트 패턴은 우리가 다양한 장소에서 데이터를 긁어모아 한 API에서 제공하고 싶을 때를 말합니다.
+
