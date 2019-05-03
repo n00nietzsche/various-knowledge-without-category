@@ -21,7 +21,7 @@ $ disown
 
 의 차이는 무엇일까요?
 
-일단, 프로그램이 터미널과 연결된 interactive shell에서 그냥 `foo`를 타이핑했다고 가정해봅시다.
+일단, 프로그램이 터미널과 연결된 interactive shell에서 리다이렉팅 없이 그냥 `foo`를 타이핑했다고 가정해봅시다.
 
 ```bash
 $ foo
@@ -49,3 +49,43 @@ echo foo
 다음은 `foo`의 출력입니다. 무엇이 어떻게 돌아가는지에 대한 다이어그램입니다.
 
 ![stdinstdoutstderr.png](https://images.velog.io/post-images/jakeseo_me/ecf11ca0-6d70-11e9-8ea3-211446efebf3/stdinstdoutstderr.png)
+
+`echo` 명령어는 커멘드라인의 인자 `foo`를 받아들입니다(stdin에서 받아들이는 것이 아닙니다.). 그리고 출력 값을 `stdout`으로 던져줍니다.
+
+## 리다이렉팅(Redirecting)
+### 리다이렉팅 출력(Redirecting output)
+
+지금 다음 명령어를 실행했다고 가정해보세요.
+
+```bash
+echo foo > temp.txt
+ls
+```
+
+이 명령어는 `temp.txt`라는 새로운 파일을 생성했을 것입니다. 안의 내용을 보기 위해서는 `cat temp.txt` 명령어를 이용하면 됩니다. 무슨 일이 일어나나요? `>`가 하는 일은 무엇일까요?
+
+![redirecting.png](https://images.velog.io/post-images/jakeseo_me/b9b41670-6d71-11e9-8ea3-211446efebf3/redirecting.png)
+
+우리는 `echo`의 출력물을 콘솔에서 `temp.txt`라는 파일로 리다이렉트 했습니다. 기존에 있는 파일에 추가하고 싶으면 `>>`기호를 사용하시면 됩니다.
+
+```bash
+echo " bar" >> temp.txt
+cat temp.txt
+```
+
+## 파이프(Pipe)
+
+우리는 어떤 프로그램의 출력 결과를 다른 프로그램의 입력 값으로 쓸 수 있을까요? 이럴 때 쓰는게 바로 파이프입니다.
+
+다음 명령어를 봅시다.
+
+```bash
+echo "foo bar baz" | wc -w
+```
+
+echo 명령어를 수행하면 `3`개의 단어를 결과로 받을 것입니다. `|` 문자는 `echo`로 인해 stdout에서 나온 결과를 `wc` 명령어의 `stdin`에 넣겠다는 것과 동일한 의미입니다.
+
+![pipe.png](https://images.velog.io/post-images/jakeseo_me/6c167060-6d72-11e9-bebc-8307bd808a6b/pipe.png)
+
+파이프를 이용해, 우리는 많은 간단한 프로그램들을 연결하고 매우 강력한 기능을 수행하게 할 수 있습니다.
+
