@@ -17,6 +17,8 @@
 
 # nohup, disown, &
 
+> 질문
+ 
 ```bash
 $ nohup foo
 ```
@@ -31,6 +33,8 @@ $ disown
 ```
 
 의 차이는 무엇일까요?
+
+> 답변 
 
 일단, 프로그램이 터미널과 연결된 interactive shell에서 리다이렉팅 없이 그냥 `foo`를 타이핑했다고 가정해봅시다.
 
