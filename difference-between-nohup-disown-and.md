@@ -106,8 +106,10 @@ mkdir foo; touch foo/file.txt
 마지막으로, 명령어의 결과를 *변수*에 저장할 수 있습니다. 그리고 그 변수를 같은 시퀀스의 커멘드에서 사용할 수 있습니다.
 
 ```bash
-myvar="foo"; echo $mybar | tr '[:lower]' '[:upper]'
+myvar="foo"; echo $mybar | tr '[:lower:]' '[:upper:]'
 ```
+
+> 참고 : tr 명령어는 문자열을 translate 하는 명령어로 앞의 조건에 해당하는 문자열들을 찾아내어, 뒤의 문자열의 케이스로 바꿉니다. 위의 명령어는 `[:lower:]`에서 `[:upper:]` 즉 소문자를 찾아 대문자로 바꾸는 것입니다.
 
 명령어들의 순서를 쪼개봅시다.
 
